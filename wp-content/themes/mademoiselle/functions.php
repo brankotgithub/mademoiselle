@@ -62,3 +62,72 @@ function mademoiselle_support (){
 
 add_action('after_setup_theme', 'mademoiselle_support');
 add_action('init', 'mademoiselle_support');
+
+
+function mademoiselle_create_post_type(){// function for services insted to install plug in Custom post type UI
+    register_post_type('our_services', array(
+        'labels'=> array(
+            'name'=> 'Services','singular_name'=>'Service','plural_name'=> 'Services','all_items'=> 'All Services',
+            'add_new'=> 'Add New Services',
+            'add_new_item'=> 'Add New Services Item',
+            'new_item'=> 'New Services',
+            'edit'=> 'Edit',
+            'edit_item'=> 'Edit Service Item',
+            'view'=> 'View Service',
+            'view_item'=> 'View Service Item',
+            'featured_image'=> 'Featured image for this Service'
+        ),
+        'public'=>true,
+        'hierarchical'=>false,
+        'show_in_menu'=>true,
+        'menu_icon'=>'dashicons-admin-generic',
+        'menu_position'=>17,
+        'supports'=> array('title','thumbnail','editor')
+    ));
+    
+    
+}
+add_action('init', 'mademoiselle_create_post_type');
+
+function mademoiselleTeam_create_post_type(){// function for team members insted to install plug in Custom post type UI
+    register_post_type('team_member', array(
+        'labels'=> array(
+            'name'=> 'TeamMember','singular_name'=>'TeamMember','plural_name'=> 'TeamMembers','all_items'=> 'All TeamMembers',
+            'add_new'=> 'Add New TeamMember',
+            'add_new_item'=> 'Add New TeamMember Item',
+            'new_item'=> 'New TeamMember',
+            'edit'=> 'Edit',
+            'edit_item'=> 'Edit TeamMember Item',
+            'view'=> 'View TeamMember',
+            'view_item'=> 'View TeamMember Item',
+            'featured_image'=> 'Featured image for this TeamMember'
+        ),
+        'public'=>true,
+        'hierarchical'=>false,
+        'show_in_menu'=>true,
+        'menu_icon'=>'dashicons-groups',
+        'menu_position'=>18,
+        'supports'=> array('title','thumbnail','editor')
+    ));
+    
+    
+}
+add_action('init', 'mademoiselleTeam_create_post_type');
+
+
+function mademoiselle_init_sidebar(){
+    
+    register_sidebar(
+            array(
+			'id'            => 'sidebar_1',
+			'name'          => __( 'Primary Sidebar' ),
+			'description'   => __( 'Page Sidebar' ),
+			'before_widget' => '<div id="%1$s" class="widget mb-4 p-4 bg-light %2$s">',
+			'after_widget'  => '</div>',
+			'before_title'  => '<h3 class="widget-title mb-5">',
+			'after_title'   => '</h3>',
+		)
+            
+    );
+}
+    add_action('widgets_init', 'mademoiselle_init_sidebar');

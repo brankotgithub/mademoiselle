@@ -8,7 +8,7 @@ and open the template in the editor.
     <head>
         <title><?php 
         bloginfo("name");
-        wp_title(' | ', true, 'left');/* must have code  support in function.php*/
+        wp_title(' | ', true, 'left');/* must have code  support in function.php it write page name next to site name*/
         ?>
         </title>
         <meta charset="UTF-8">
